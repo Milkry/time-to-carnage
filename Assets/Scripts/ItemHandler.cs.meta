@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 40c4a2aa340cdca47aa6a03c514fa134
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bulletImpactEffect: {instanceID: 0}
+  - bloodParticles: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
