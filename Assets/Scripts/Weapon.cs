@@ -52,7 +52,19 @@ public class Weapon : MonoBehaviour
                     currentMagazines = 999;
                     break;
 
-                case "Rifle":
+                case "Deagle":
+                    magazineText.text = currentMagazines.ToString();
+                    break;
+
+                case "MP5":
+                    magazineText.text = currentMagazines.ToString();
+                    break;
+
+                case "P90":
+                    magazineText.text = currentMagazines.ToString();
+                    break;
+
+                case "M4":
                     magazineText.text = currentMagazines.ToString();
                     break;
 
@@ -79,11 +91,23 @@ public class Weapon : MonoBehaviour
                     switch (gameObject.name)
                     {
                         case "Pistol":
-                            PistolFire();
+                            Pistol();
                             break;
 
-                        case "Rifle":
-                            RifleFire();
+                        case "Deagle":
+                            Deagle();
+                            break;
+
+                        case "MP5":
+                            MP5();
+                            break;
+
+                        case "P90":
+                            P90();
+                            break;
+
+                        case "M4":
+                            M4();
                             break;
 
                         default:
@@ -114,7 +138,19 @@ public class Weapon : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("PistolReload");
                 break;
 
-            case "Rifle":
+            case "Deagle":
+                FindObjectOfType<AudioManager>().Play("PistolReload");
+                break;
+
+            case "MP5":
+                FindObjectOfType<AudioManager>().Play("RifleReload");
+                break;
+
+            case "P90":
+                FindObjectOfType<AudioManager>().Play("RifleReload");
+                break;
+
+            case "M4":
                 FindObjectOfType<AudioManager>().Play("RifleReload");
                 break;
 
@@ -140,7 +176,7 @@ public class Weapon : MonoBehaviour
         isShootButtonPressed = buttonValue;
     }
 
-    public void PistolFire()
+    public void Pistol()
     {
         //float rotation = Random.Range(-spread, spread);
         FindObjectOfType<AudioManager>().PlayOnTop("Pistol");
@@ -154,7 +190,46 @@ public class Weapon : MonoBehaviour
         Destroy(muzzFlashLight, 0.1f);
     }
 
-    public void RifleFire()
+    public void Deagle()
+    {
+        FindObjectOfType<AudioManager>().PlayOnTop("Pistol");
+        GameObject muzzFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
+        GameObject muzzFlashLight = Instantiate(muzzleFlashLight, muzzleFlashLightPoint.position, muzzleFlashLightPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        gunParticles.Play();
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        Destroy(muzzFlash, 0.1f);
+        Destroy(muzzFlashLight, 0.1f);
+    }
+
+    public void MP5()
+    {
+        FindObjectOfType<AudioManager>().PlayOnTop("Rifle");
+        GameObject muzzFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
+        GameObject muzzFlashLight = Instantiate(muzzleFlashLight, muzzleFlashLightPoint.position, muzzleFlashLightPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        gunParticles.Play();
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        Destroy(muzzFlash, 0.1f);
+        Destroy(muzzFlashLight, 0.1f);
+    }
+
+    public void P90()
+    {
+        FindObjectOfType<AudioManager>().PlayOnTop("Rifle");
+        GameObject muzzFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
+        GameObject muzzFlashLight = Instantiate(muzzleFlashLight, muzzleFlashLightPoint.position, muzzleFlashLightPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        gunParticles.Play();
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        Destroy(muzzFlash, 0.1f);
+        Destroy(muzzFlashLight, 0.1f);
+    }
+
+    public void M4()
     {
         FindObjectOfType<AudioManager>().PlayOnTop("Rifle");
         GameObject muzzFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);

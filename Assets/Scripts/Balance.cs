@@ -5,7 +5,7 @@ using TMPro;
 
 public class Balance : MonoBehaviour
 {
-    public static int accountBalance = 0;
+    public static int accountBalance = 2000;
     public static int rareAccountBalance = 0;
 
     [SerializeField] private TextMeshProUGUI balance;
@@ -32,6 +32,18 @@ public class Balance : MonoBehaviour
     public static void Withdraw(int amount)
     {
         accountBalance -= amount;
+    }
+
+    public static bool CanWithdraw(int amount)
+    {
+        if (accountBalance >= amount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public static void Reset()

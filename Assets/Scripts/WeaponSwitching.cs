@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public int selectedWeapon = 1;
+    public int selectedWeapon = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,24 +27,47 @@ public class WeaponSwitching : MonoBehaviour
         }
     }
 
-    public void SelectPistol()
+    private void SelectItem(int slot)
     {
         if (!Weapon.isReloading)
         {
             FindObjectOfType<AudioManager>().Play("ButtonClick");
-            selectedWeapon = 0;
+            selectedWeapon = slot;
             SelectWeapon();
         }
     }
 
-    public void SelectRifle()
+    public void SelectPistol()
     {
-        if (!Weapon.isReloading)
-        {
-            FindObjectOfType<AudioManager>().Play("ButtonClick");
-            selectedWeapon = 1;
-            SelectWeapon();
-        }
+        SelectItem(0);
+    }
+    public void SelectDeagle()
+    {
+        SelectItem(1);
+    }
+    public void SelectMP5()
+    {
+        SelectItem(2);
+    }
+    public void SelectP90()
+    {
+        SelectItem(3);
+    }
+    public void SelectM4()
+    {
+        SelectItem(4);
+    }
+    public void SelectWeaponName1()
+    {
+        SelectItem(5);
+    }
+    public void SelectWeaponName2()
+    {
+        SelectItem(6);
+    }
+    public void SelectWeaponName3()
+    {
+        SelectItem(7);
     }
 
     public void OnButtonDown()
