@@ -15,13 +15,25 @@ public class Powerups : MonoBehaviour
     [Space]
     [Header("HEALTH POWERUP")]
     [Space]
-    [SerializeField] private int heal;
+    [SerializeField] private int healAmount;
 
     [Space]
     [Header("AMMO POWERUP")]
     [Space]
-    [SerializeField] private int rifleMagazines;
-    //[SerializeField] private int deagleMagazines;
+    [SerializeField] private int deagleMagazines;
+    [SerializeField] private int mp5Magazines;
+    [SerializeField] private int p90Magazines;
+    [SerializeField] private int m4Magazines;
+
+    [Space]
+    [Header("MONEY POWERUP")]
+    [Space]
+    [SerializeField] private int moneyDrop;
+
+    [Space]
+    [Header("GRENADE POWERUP")]
+    [Space]
+    [SerializeField] private int grenadeDrop;
 
     private Vector3 posOffset = new Vector3();
     private Vector3 tempPos = new Vector3();
@@ -49,18 +61,21 @@ public class Powerups : MonoBehaviour
             switch (type.ToUpper())
             {
                 case "HEALTH":
-                    FindObjectOfType<PlayerController>().GetComponent<PlayerController>().AddHealth(heal);
                     FindObjectOfType<AudioManager>().PlayOnTop("Powerup_Pickup");
+                    FindObjectOfType<PlayerController>().GetComponent<PlayerController>().AddHealth(healAmount);
                     break;
 
                 case "AMMO":
-                    GetAndRefillGuns();
                     FindObjectOfType<AudioManager>().PlayOnTop("Ammo_Pickup");
+                    GetAndRefillGuns();
                     break;
 
-                case "SPEED":
-                    Debug.Log("Speed buff");
-                    //give player speed
+                case "MONEY":
+                    FindObjectOfType<AudioManager>().PlayOnTop("Purchase");
+                    Balance.Deposit(moneyDrop);
+                    break;
+
+                case "GRENADES":
                     break;
 
                 default:
@@ -75,15 +90,27 @@ public class Powerups : MonoBehaviour
     /// <summary>
     /// Gets all inactive guns and gives them magazines
     /// </summary>
-    private void GetAndRefillGuns()
+    public void GetAndRefillGuns()
     {
         var guns = FindObjectsOfType<Weapon>(true);
-        for (int i = 0; i < guns.Length; i++)
+        for (int i = 1; i < guns.Length; i++) //i = 1 so it would ignore the default pistol
         {
             switch (guns[i].gameObject.name)
             {
-                case "Rifle":
-                    guns[i].GiveMagazines(rifleMagazines);
+                case "Deagle":
+                    guns[i].GiveMagazines(deagleMagazines);
+                    break;
+
+                case "MP5":
+                    guns[i].GiveMagazines(mp5Magazines);
+                    break;
+
+                case "P90":
+                    guns[i].GiveMagazines(p90Magazines);
+                    break;
+
+                case "M4":
+                    guns[i].GiveMagazines(m4Magazines);
                     break;
 
                 default:

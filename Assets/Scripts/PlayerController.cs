@@ -42,14 +42,24 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
-
-        FindObjectOfType<AudioManager>().Play("Hurt");
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("Hurt");
+        }
     }
 
     public void AddHealth(int health)
     {
-        currentHealth += health;
-        healthbar.SetHealth(currentHealth);
+        if (currentHealth + health <= maxHealth)
+        {
+            currentHealth += health;
+            healthbar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            healthbar.SetHealth(maxHealth);
+        }
     }
 
     private void Die()

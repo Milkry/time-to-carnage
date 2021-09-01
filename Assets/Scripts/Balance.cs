@@ -5,20 +5,20 @@ using TMPro;
 
 public class Balance : MonoBehaviour
 {
-    public static int accountBalance = 2000;
+    public static int accountBalance = 1000;
     public static int rareAccountBalance = 0;
 
     [SerializeField] private TextMeshProUGUI balance;
     [SerializeField] private TextMeshProUGUI rareBalance;
 
     private float nextTick = 0f;
-    private float checkRate = 0.5f;
+    private float updateRate = 0.5f;
 
     private void Update()
     {
         if (Time.time > nextTick)
         {
-            nextTick = Time.time + checkRate;
+            nextTick = Time.time + updateRate;
             balance.text = "$ " + accountBalance.ToString();
             rareBalance.text = rareAccountBalance.ToString();
         }

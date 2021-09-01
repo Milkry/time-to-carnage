@@ -166,7 +166,6 @@ public class Weapon : MonoBehaviour
 
     public void GiveMagazines(int magazines)
     {
-        Debug.Log(magazines);
         currentMagazines += magazines;
         outofMagazines = false;
     }

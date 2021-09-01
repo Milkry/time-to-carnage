@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1249484476}
   - component: {fileID: 8515365575035688136}
   m_Layer: 0
-  m_Name: InstantHealth
+  m_Name: Money
   m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf1227bf5e647b041955ebf511638cba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d702832ed41a18841a619a630b7032e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,16 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5341eaccf2f4442818195fe9dea4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: Health
+  type: Money
   degreesPerSecond: 0
   amplitude: 0.2
   frequency: 1
-  healAmount: 40
+  healAmount: 0
   deagleMagazines: 0
   mp5Magazines: 0
   p90Magazines: 0
   m4Magazines: 0
-  moneyDrop: 0
+  moneyDrop: 500
   grenadeDrop: 0
 --- !u!1 &7474149225785983693
 GameObject:
