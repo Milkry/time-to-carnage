@@ -24,6 +24,9 @@ public class Powerups : MonoBehaviour
     [SerializeField] private int mp5Magazines;
     [SerializeField] private int p90Magazines;
     [SerializeField] private int m4Magazines;
+    [SerializeField] private int g3Magazines;
+    [SerializeField] private int shotgunShells;
+    [SerializeField] private int m40Magazines;
 
     [Space]
     [Header("MONEY POWERUP")]
@@ -76,6 +79,8 @@ public class Powerups : MonoBehaviour
                     break;
 
                 case "GRENADES":
+                    FindObjectOfType<AudioManager>().PlayOnTop("Powerup_Pickup");
+                    SideInventory.AddGrenades(grenadeDrop);
                     break;
 
                 default:
@@ -92,11 +97,15 @@ public class Powerups : MonoBehaviour
     /// </summary>
     public void GetAndRefillGuns()
     {
-        var guns = FindObjectsOfType<Weapon>(true);
-        for (int i = 1; i < guns.Length; i++) //i = 1 so it would ignore the default pistol
+        var guns = FindObjectsOfType<Weapon>();
+        for (int i = 0; i < guns.Length; i++)
         {
             switch (guns[i].gameObject.name)
             {
+                case "Pistol":
+                    //nothing
+                    break;
+
                 case "Deagle":
                     guns[i].GiveMagazines(deagleMagazines);
                     break;
@@ -111,6 +120,18 @@ public class Powerups : MonoBehaviour
 
                 case "M4":
                     guns[i].GiveMagazines(m4Magazines);
+                    break;
+
+                case "G3":
+                    guns[i].GiveMagazines(g3Magazines);
+                    break;
+
+                case "Shotgun":
+                    guns[i].GiveMagazines(shotgunShells);
+                    break;
+
+                case "M40":
+                    guns[i].GiveMagazines(m40Magazines);
                     break;
 
                 default:

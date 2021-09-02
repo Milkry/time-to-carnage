@@ -31,7 +31,7 @@ public class WeaponSwitching : MonoBehaviour
     {
         if (!Weapon.isReloading)
         {
-            FindObjectOfType<AudioManager>().Play("ButtonClick");
+            FindObjectOfType<AudioManager>().Play("ButtonClick"); //Replace this sound with something else
             selectedWeapon = slot;
             SelectWeapon();
         }
@@ -57,15 +57,15 @@ public class WeaponSwitching : MonoBehaviour
     {
         SelectItem(4);
     }
-    public void SelectWeaponName1()
+    public void SelectG3()
     {
         SelectItem(5);
     }
-    public void SelectWeaponName2()
+    public void SelectShotgun()
     {
         SelectItem(6);
     }
-    public void SelectWeaponName3()
+    public void SelectM40()
     {
         SelectItem(7);
     }

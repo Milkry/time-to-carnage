@@ -3484,7 +3484,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Rifle
+  - name: G3
     clip: {fileID: 8300000, guid: 88e41af33941bb64bb82354d1f7f9f5c, type: 3}
     group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
       type: 2}
@@ -3569,6 +3569,62 @@ MonoBehaviour:
     group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
       type: 2}
     volume: 0.9
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: P90
+    clip: {fileID: 8300000, guid: dfec97ef549ac6749978822da6949376, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Deagle
+    clip: {fileID: 8300000, guid: c34db54f6cd7b2b4981e5bbee59edd53, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MP5
+    clip: {fileID: 8300000, guid: be4b756f5d0b2374791c00276a11f308, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: M4
+    clip: {fileID: 8300000, guid: 023bc9f653be71a4cbe4c5ab233e31b2, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: M40
+    clip: {fileID: 8300000, guid: f93b4a5c6510fa4429ae5d8514394dc9, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShotgunPump
+    clip: {fileID: 8300000, guid: be857d3c0426aa94bbdb1864a03799af, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Use_Healthpack
+    clip: {fileID: 8300000, guid: e45d04e622a0b4648aa548983dd84a85, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}

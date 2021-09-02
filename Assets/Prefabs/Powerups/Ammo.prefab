@@ -145,6 +145,9 @@ MonoBehaviour:
   mp5Magazines: 2
   p90Magazines: 1
   m4Magazines: 2
+  g3Magazines: 2
+  shotgunShells: 14
+  m40Magazines: 1
   moneyDrop: 0
   grenadeDrop: 0
 --- !u!1 &7474149225785983693

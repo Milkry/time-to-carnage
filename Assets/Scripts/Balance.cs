@@ -5,7 +5,7 @@ using TMPro;
 
 public class Balance : MonoBehaviour
 {
-    public static int accountBalance = 1000;
+    public static int accountBalance = 0;
     public static int rareAccountBalance = 0;
 
     [SerializeField] private TextMeshProUGUI balance;

@@ -11,6 +11,7 @@ public class SideInventory : MonoBehaviour
     [SerializeField] private int healthpackStartingAmount = 0;
     [SerializeField] private int ammopackStartingAmount = 0;
     [SerializeField] private int grenadeStartingAmount = 0;
+    [SerializeField] private float useCooldown = 5;
 
     [Space]
     [Header("HEALTHPACK")]
@@ -24,6 +25,9 @@ public class SideInventory : MonoBehaviour
     [SerializeField] private int mp5Magazines;
     [SerializeField] private int p90Magazines;
     [SerializeField] private int m4Magazines;
+    [SerializeField] private int g3Magazines;
+    [SerializeField] private int shotgunShells;
+    [SerializeField] private int m40Magazines;
 
     //Add something for grenades
 
@@ -33,6 +37,9 @@ public class SideInventory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI grenades;
 
     private float nextTick = 0f;
+    private float nextHealthpackUse = 0f;
+    private float nextAmmopackUse = 0f;
+    private float nextGrenadeUse = 0f;
     private float updateRate = 0.2f;
     public static int currentHealthpacks;
     public static int currentAmmopacks;
@@ -75,8 +82,10 @@ public class SideInventory : MonoBehaviour
 
     public void UseHealthpack()
     {
-        if (currentHealthpacks > 0 && player.currentHealth < player.maxHealth)
+        if (currentHealthpacks > 0 && player.currentHealth < player.maxHealth && Time.time > nextHealthpackUse)
         {
+            nextHealthpackUse = Time.time + useCooldown;
+            FindObjectOfType<AudioManager>().PlayOnTop("Use_Healthpack");
             FindObjectOfType<PlayerController>().GetComponent<PlayerController>().AddHealth(healAmount);
             currentHealthpacks--;
         }
@@ -84,14 +93,20 @@ public class SideInventory : MonoBehaviour
 
     public void UseAmmopack()
     {
-        if (currentAmmopacks > 0)
+        if (currentAmmopacks > 0 && Time.time > nextAmmopackUse)
         {
-            var guns = FindObjectsOfType<Weapon>(true);
+            nextAmmopackUse = Time.time + useCooldown;
+            var guns = FindObjectsOfType<Weapon>();
+            FindObjectOfType<AudioManager>().PlayOnTop("Ammo_Pickup");
             currentAmmopacks--;
-            for (int i = 1; i < guns.Length; i++) //i = 1 so it would ignore the default pistol
+            for (int i = 0; i < guns.Length; i++)
             {
                 switch (guns[i].gameObject.name)
                 {
+                    case "Pistol":
+                        //nothing
+                        break;
+
                     case "Deagle":
                         guns[i].GiveMagazines(deagleMagazines);
                         break;
@@ -108,6 +123,18 @@ public class SideInventory : MonoBehaviour
                         guns[i].GiveMagazines(m4Magazines);
                         break;
 
+                    case "G3":
+                        guns[i].GiveMagazines(g3Magazines);
+                        break;
+
+                    case "Shotgun":
+                        guns[i].GiveMagazines(shotgunShells);
+                        break;
+
+                    case "M40":
+                        guns[i].GiveMagazines(m40Magazines);
+                        break;
+
                     default:
                         Debug.LogWarning($"No such weapon name found. Searched for: {guns[i].gameObject.name}");
                         break;
@@ -118,8 +145,9 @@ public class SideInventory : MonoBehaviour
 
     public void UseGrenade()
     {
-        if (currentGrenades > 0)
+        if (currentGrenades > 0 && Time.time > nextGrenadeUse)
         {
+            nextGrenadeUse = Time.time + useCooldown;
             Debug.Log("BOOM!");
             currentGrenades--;
         }
