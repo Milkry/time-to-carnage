@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SideInventory : MonoBehaviour
@@ -35,6 +36,9 @@ public class SideInventory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthpacks;
     [SerializeField] private TextMeshProUGUI ammopacks;
     [SerializeField] private TextMeshProUGUI grenades;
+    [SerializeField] private Image medkitImage;
+    [SerializeField] private Image ammoImage;
+    [SerializeField] private Image grenadeImage;
 
     private float nextTick = 0f;
     private float nextHealthpackUse = 0f;
@@ -51,6 +55,9 @@ public class SideInventory : MonoBehaviour
         currentHealthpacks = healthpackStartingAmount;
         currentAmmopacks = ammopackStartingAmount;
         currentGrenades = grenadeStartingAmount;
+        medkitImage.fillAmount = 0;
+        ammoImage.fillAmount = 0;
+        grenadeImage.fillAmount = 0;
         player = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
     }
 
@@ -63,6 +70,10 @@ public class SideInventory : MonoBehaviour
             ammopacks.text = currentAmmopacks.ToString();
             grenades.text = currentGrenades.ToString();
         }
+
+        medkitImage.fillAmount -= 1 / useCooldown * Time.deltaTime;
+        ammoImage.fillAmount -= 1 / useCooldown * Time.deltaTime;
+        grenadeImage.fillAmount -= 1 / useCooldown * Time.deltaTime;
     }
 
     public static void AddHealthpacks(int amount)
@@ -85,6 +96,7 @@ public class SideInventory : MonoBehaviour
         if (currentHealthpacks > 0 && player.currentHealth < player.maxHealth && Time.time > nextHealthpackUse)
         {
             nextHealthpackUse = Time.time + useCooldown;
+            medkitImage.fillAmount = 1;
             FindObjectOfType<AudioManager>().PlayOnTop("Use_Healthpack");
             FindObjectOfType<PlayerController>().GetComponent<PlayerController>().AddHealth(healAmount);
             currentHealthpacks--;
@@ -96,9 +108,11 @@ public class SideInventory : MonoBehaviour
         if (currentAmmopacks > 0 && Time.time > nextAmmopackUse)
         {
             nextAmmopackUse = Time.time + useCooldown;
-            var guns = FindObjectsOfType<Weapon>();
             FindObjectOfType<AudioManager>().PlayOnTop("Ammo_Pickup");
+            ammoImage.fillAmount = 1;
+            var guns = FindObjectsOfType<Weapon>();
             currentAmmopacks--;
+
             for (int i = 0; i < guns.Length; i++)
             {
                 switch (guns[i].gameObject.name)
@@ -148,6 +162,7 @@ public class SideInventory : MonoBehaviour
         if (currentGrenades > 0 && Time.time > nextGrenadeUse)
         {
             nextGrenadeUse = Time.time + useCooldown;
+            grenadeImage.fillAmount = 1;
             Debug.Log("BOOM!");
             currentGrenades--;
         }

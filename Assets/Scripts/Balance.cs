@@ -22,6 +22,11 @@ public class Balance : MonoBehaviour
             balance.text = "$ " + accountBalance.ToString();
             rareBalance.text = rareAccountBalance.ToString();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Deposit(10000);
+        }
     }
 
     public static void Deposit(int amount)

@@ -28,6 +28,12 @@ public class BulletBehaviour : MonoBehaviour
             GameObject impactEffect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
             Destroy(impactEffect, 0.35f);
         }
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            //FindObjectOfType<AudioManager>().PlayOnTop("BulletSpark");
+            GameObject impactEffect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
+            Destroy(impactEffect, 0.35f);
+        }
 
         Destroy(gameObject);
     }

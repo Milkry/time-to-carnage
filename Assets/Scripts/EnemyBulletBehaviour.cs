@@ -33,5 +33,7 @@ public class EnemyBulletBehaviour : MonoBehaviour
             GameObject impactEffect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
             Destroy(impactEffect, 0.35f);
         }
+
+        Destroy(gameObject);
     }
 }
