@@ -5053,7 +5053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
-  range: 100
   fireRate: 0.7
   spread: 4
   bulletSpeed: 30
@@ -5120,7 +5119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 18
-  range: 150
   fireRate: 1.2
   spread: 5
   bulletSpeed: 50
@@ -24926,7 +24924,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  range: 150
   fireRate: 0.1
   spread: 5
   bulletSpeed: 40
@@ -25083,7 +25080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 8
-  range: 150
   fireRate: 0.06
   spread: 5
   bulletSpeed: 40
@@ -25210,7 +25206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  range: 150
   fireRate: 0.3
   spread: 5
   bulletSpeed: 40
@@ -25259,7 +25254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5469739206112483436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2049559361865052818}
@@ -25476,7 +25471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  range: 150
   fireRate: 0.5
   spread: 5
   bulletSpeed: 40
@@ -30436,7 +30430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  range: 150
   fireRate: 0.3
   spread: 5
   bulletSpeed: 40
@@ -30623,7 +30616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 13
-  range: 150
   fireRate: 0.1
   spread: 5
   bulletSpeed: 30
