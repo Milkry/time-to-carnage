@@ -12,6 +12,7 @@ TagManager:
   - EnemySniper
   - EnemyGrenade
   - Powerup
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

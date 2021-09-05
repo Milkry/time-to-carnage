@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     public static void Home(int sceneID)
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadSceneAsync(sceneID);
         Balance.Reset();
         FindObjectOfType<AudioManager>().StopAll();
     }

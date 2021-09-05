@@ -3628,6 +3628,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: BulletSpark
+    clip: {fileID: 8300000, guid: 0cce283239daef14d94c3d96cb30fef9, type: 3}
+    group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
+      type: 2}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1672705556
 Transform:
   m_ObjectHideFlags: 0

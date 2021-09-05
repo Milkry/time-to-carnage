@@ -6,7 +6,6 @@ using TMPro;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] public int damage;
-    [SerializeField] private float range;
     [SerializeField] private float fireRate;
     [SerializeField] private float spread;
     [SerializeField] private float bulletSpeed;
@@ -32,6 +31,7 @@ public class Weapon : MonoBehaviour
     private int currentMagazines;
     private bool outofMagazines = false;
     private bool isShootButtonPressed = false;
+    private Vector3 bulletRotation;
 
     private void Start()
     {
@@ -41,6 +41,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        //Display ammo
         if (!isReloading)
         {
             ammoText.text = currentAmmo.ToString() + " / " + maxAmmo.ToString();
@@ -86,11 +87,13 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        //If player is out of ammo
         if (currentMagazines <= 0)
         {
             outofMagazines = true;
         }
 
+        //Shoot
         if (isShootButtonPressed)
         {
             if (currentAmmo > 0)
@@ -98,6 +101,7 @@ public class Weapon : MonoBehaviour
                 if (Time.time > nextFire)
                 {
                     nextFire = Time.time + fireRate;
+                    bulletRotation = new Vector3(0, Random.Range(-spread, spread), 0);
                     currentAmmo--;
 
                     switch (gameObject.name)
@@ -211,19 +215,30 @@ public class Weapon : MonoBehaviour
         isShootButtonPressed = buttonValue;
     }
 
+    //Rotate the bullet to face the opposite direction from where it comes from
+    /*private IEnumerator RotateBullet(GameObject bullet, Rigidbody2D rb)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Vector2 direction = (bullet.transform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+    }*/
+
+    #region Weapons
     public void Pistol()
     {
-        //float rotation = Random.Range(-spread, spread);
         FindObjectOfType<AudioManager>().PlayOnTop("Pistol");
         GameObject muzzFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
         GameObject muzzFlashLight = Instantiate(muzzleFlashLight, muzzleFlashLightPoint.position, muzzleFlashLightPoint.rotation);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
+
 
     public void Deagle()
     {
@@ -233,7 +248,8 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
@@ -246,7 +262,8 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
@@ -259,7 +276,9 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        var rotation = new Vector3(0, Random.Range(-spread, spread), 0);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
@@ -272,7 +291,8 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
@@ -285,7 +305,8 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
@@ -304,8 +325,10 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         gunParticles.Play();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce((firePoint.up + bulletRotation) * bulletSpeed, ForceMode2D.Impulse);
+        //StartCoroutine(RotateBullet(bullet, rb));
         Destroy(muzzFlash, 0.1f);
         Destroy(muzzFlashLight, 0.1f);
     }
+    #endregion
 }

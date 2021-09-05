@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
             switch (enemyType)
             {
                 case 1:
-                    //Is not required
+                    //nothing
                     break;
 
                 case 2:

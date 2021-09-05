@@ -30,7 +30,7 @@ public class BulletBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            //FindObjectOfType<AudioManager>().PlayOnTop("BulletSpark");
+            FindObjectOfType<AudioManager>().PlayOnTop("BulletSpark");
             GameObject impactEffect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
             Destroy(impactEffect, 0.35f);
         }

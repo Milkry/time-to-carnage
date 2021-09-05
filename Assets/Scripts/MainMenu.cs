@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     {
         //Can load the next scene by doing
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadSceneAsync("Game");
     }
 
     public void Upgrades()
