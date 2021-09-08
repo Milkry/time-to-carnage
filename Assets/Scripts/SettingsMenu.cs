@@ -11,23 +11,27 @@ public class SettingsMenu : MonoBehaviour
     //For Android -> "/data/data/pkg-name/shared_prefs/pkg-name.v2.playerprefs.xml"
 
     //Save Preferences
+    private readonly string PPFilesGenerated = "FilesGenerated";
     private readonly string PPMasterVolume = "MasterVolume";
     private readonly string PPMusicVolume = "MusicVolume";
     private readonly string PPSoundEffectsVolume = "SoundEffectsVolume";
+    public readonly string PPTutorial = "TutorialDone"; //Tutorial Finished = 1 | Tutorial Unfinished = 0
 
     //AudioMixer Variables
     private readonly string AAMasterVolume = "masterVolume";
     private readonly string AAMusicVolume = "musicVolume";
     private readonly string AASoundEffectsVolume = "soundEffectsVolume";
 
+    //References
     public AudioMixer audioMixer;
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider soundEffectsSlider;
+    public Button resetTutorial;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey(PPMasterVolume))
+        if (PlayerPrefs.HasKey(PPFilesGenerated))
         {
             //Returning player
             Load();
@@ -39,14 +43,26 @@ public class SettingsMenu : MonoBehaviour
         }
     }
     
-    /*private void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (PlayerPrefs.GetInt(PPTutorial) == 1)
         {
-            PlayerPrefs.DeleteAll();
-            Debug.Log("Deleted Save!");
+            resetTutorial.interactable = true;
         }
-    }*/
+        else if (PlayerPrefs.GetInt(PPTutorial) == 0)
+        {
+            resetTutorial.interactable = false;
+        }
+    }
+
+    private void GenerateFiles()
+    {
+        PlayerPrefs.SetInt(PPFilesGenerated, 1);
+        PlayerPrefs.SetFloat(PPMasterVolume, masterSlider.maxValue);
+        PlayerPrefs.SetFloat(PPMusicVolume, musicSlider.maxValue);
+        PlayerPrefs.SetFloat(PPSoundEffectsVolume, soundEffectsSlider.maxValue);
+        PlayerPrefs.SetInt(PPTutorial, 0);
+    }
 
     public void SetMasterVolume(float volume)
     {
@@ -65,6 +81,10 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat(AASoundEffectsVolume, CalculateVolume(volume));
         Save(PPSoundEffectsVolume, volume);
     }
+    private float CalculateVolume(float volume)
+    {
+        return Mathf.Log10(volume) * 20;
+    }
 
     private void Save(string keyName, float keyValue)
     {
@@ -74,6 +94,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Load()
     {
+        //Get values from save file
         float masterVol = PlayerPrefs.GetFloat(PPMasterVolume);
         float musicVol = PlayerPrefs.GetFloat(PPMusicVolume);
         float soundEffectsVol = PlayerPrefs.GetFloat(PPSoundEffectsVolume);
@@ -89,15 +110,10 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat(AASoundEffectsVolume, CalculateVolume(soundEffectsVol));
     }
 
-    private void GenerateFiles()
+    public void ResetTutorial()
     {
-        PlayerPrefs.SetFloat(PPMasterVolume, masterSlider.maxValue);
-        PlayerPrefs.SetFloat(PPMusicVolume, musicSlider.maxValue);
-        PlayerPrefs.SetFloat(PPSoundEffectsVolume, soundEffectsSlider.maxValue);
-    }
-
-    private float CalculateVolume(float volume)
-    {
-        return Mathf.Log10(volume) * 20;
+        PlayerPrefs.SetInt(PPTutorial, 0);
+        PlayerPrefs.Save();
+        FindObjectOfType<AudioManager>().Play("ButtonClick");
     }
 }

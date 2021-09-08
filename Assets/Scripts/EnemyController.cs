@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour
     private float currentHealth;
     private Canvas hpbar;
     private Slider hpslider;
+    private ParticleSystem bloodParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         player = target.GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
+        bloodParticles = FindObjectOfType<ItemHandler>().GetComponent<ItemHandler>().bloodParticles;
 
         //Cooldowns
         nextPistolAttack = Time.time + 1f;
@@ -187,14 +189,16 @@ public class EnemyController : MonoBehaviour
         if (Helper.FindChildWithTag(gameObject, "EnemyKnife") && collision.gameObject.CompareTag("Player") && Time.time > nextAttack)
         {
             nextAttack = Time.time + attackRate;
-            AttackMelee();
+            AttackMelee(collision);
         }
     }
 
-    private void AttackMelee()
+    private void AttackMelee(Collider2D collision)
     {
         //Play animation of melee attack
         FindObjectOfType<AudioManager>().PlayOnTop("Stab");
+        ParticleSystem blood = Instantiate(bloodParticles, collision.transform.position, Quaternion.identity);
+        blood.Play();
         player.TakeDamage(damage);
     }
 

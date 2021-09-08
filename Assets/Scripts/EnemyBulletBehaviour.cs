@@ -7,12 +7,14 @@ public class EnemyBulletBehaviour : MonoBehaviour
     private GameObject bulletImpactEffect;
     private PlayerController player;
     private EnemyController enemy;
+    private ParticleSystem bloodParticles;
 
     private void Start()
     {
         bulletImpactEffect = FindObjectOfType<ItemHandler>().GetComponent<ItemHandler>().bulletImpactEffect;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         enemy = GameObject.FindGameObjectWithTag("EnemyPistol").GetComponentInParent<EnemyController>();
+        bloodParticles = FindObjectOfType<ItemHandler>().GetComponent<ItemHandler>().bloodParticles;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,9 +31,8 @@ public class EnemyBulletBehaviour : MonoBehaviour
             FindObjectOfType<AudioManager>().PlayOnTop("BulletImpact_Enemy");
             player.TakeDamage(enemy.damage);
             Destroy(gameObject);
-            //play blood particles
-            GameObject impactEffect = Instantiate(bulletImpactEffect, transform.position, Quaternion.identity);
-            Destroy(impactEffect, 0.35f);
+            ParticleSystem blood = Instantiate(bloodParticles, collision.transform.position, Quaternion.identity);
+            blood.Play();
         }
 
         Destroy(gameObject);

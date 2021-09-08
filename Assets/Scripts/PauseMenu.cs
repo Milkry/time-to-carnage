@@ -29,4 +29,9 @@ public class PauseMenu : MonoBehaviour
         Balance.Reset();
         FindObjectOfType<AudioManager>().StopAll();
     }
+
+    public void SaveData()
+    {
+        SaveSystem.SaveData();
+    }
 }

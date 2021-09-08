@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
+    private float saveStartDelay = 60f;
+    private float saveDelay = 60f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+        InvokeRepeating("AutoSave", saveStartDelay, saveDelay);
     }
 
     private void Update()
@@ -70,5 +73,15 @@ public class PlayerController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
         FindObjectOfType<EnemyController>().target = null;
         FindObjectOfType<Gameover>().GetComponent<Gameover>().GameOver();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSystem.SaveData();
+    }
+
+    private void AutoSave()
+    {
+        SaveSystem.SaveData();
     }
 }

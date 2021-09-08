@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private string PPTutorial;
+
     private void Start()
     {
         FindObjectOfType<AudioManager>().Play("Theme");
+        PPTutorial = FindObjectOfType<SettingsMenu>().PPTutorial;
     }
 
     public void PlayClick()
@@ -17,19 +20,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        //Can load the next scene by doing
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadSceneAsync("Game");
+        PlayerPrefs.SetInt(PPTutorial, 1);
+        //play a tutorial
     }
 
     public void Upgrades()
     {
-        //SceneManager.LoadScene("Upgrades");
+        PlayClick();
+        //SceneManager.LoadSceneAsync("Upgrades");
     }
 
     public void QuitGame()
     {
-        FindObjectOfType<AudioManager>().Play("ButtonClick");
+        PlayClick();
         Application.Quit();
     }
 }
