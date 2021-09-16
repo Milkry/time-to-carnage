@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Joystick joystick;
+    [SerializeField] private GameObject tutorial;
+    [SerializeField] private GameObject firstPart;
 
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private float saveStartDelay = 60f;
     private float saveDelay = 60f;
+    private string PPTutorial = "TutorialDone";
 
     private void Start()
     {
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
         InvokeRepeating("AutoSave", saveStartDelay, saveDelay);
+        PlayTutorial();
     }
 
     private void Update()
@@ -83,5 +87,27 @@ public class PlayerController : MonoBehaviour
     private void AutoSave()
     {
         SaveSystem.SaveData();
+    }
+
+    private void PlayTutorial()
+    {
+        if (PlayerPrefs.GetInt(PPTutorial) == 0)
+        {
+            tutorial.SetActive(true);
+            firstPart.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void FinishTutorial()
+    {
+        tutorial.SetActive(false);
+        Time.timeScale = 1f;
+        PlayerPrefs.SetInt(PPTutorial, 1);
+    }
+
+    public void ButtonSound()
+    {
+        FindObjectOfType<AudioManager>().PlayOnTop("ButtonClick");
     }
 }

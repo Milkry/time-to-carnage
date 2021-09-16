@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: -6038328028502577333}
   - component: {fileID: 3205131592539168336}
   m_Layer: 3
-  m_Name: Enemy Knife
+  m_Name: Enemy Knife Red
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

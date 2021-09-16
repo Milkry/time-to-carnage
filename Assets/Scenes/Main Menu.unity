@@ -2126,7 +2126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &742150876
 GameObject:
@@ -2495,7 +2495,7 @@ RectTransform:
   - {fileID: 1766757708}
   - {fileID: 616272428}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2657,6 +2657,49 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1152595340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152595342}
+  - component: {fileID: 1152595341}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1152595341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152595340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4717a90eb03b84b4f8bb95f14b3015c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1152595342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152595340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1729.447, y: 1067.7275, z: -291.19656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179278123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,18 +3240,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1414734160}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2139848107}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadLevel
@@ -3690,28 +3721,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Made By:
+  m_text: '<u><#b95c1a>Made By:</color></u>
 
-    Panagiotis Stathopoulos (Milkry)
-
-
-
-    Music Used:
-
-    "Killers"
-    Kevin MacLeod (incompetech.com)
-
-    Licensed under Creative Commons: By Attribution
-    4.0 License
-
-    http://creativecommons.org/licenses/by/4.0/
+    <i>Panagiotis Stathopoulos (Milkry)</i>
 
 
 
-    Font Used:
+    <u><#b95c1a>Music
+    Used:</color></u>
 
-    @font-face
-    (www.fontfabric.com)'
+    <i>"Killers" Kevin MacLeod (incompetech.com)
+
+    Licensed
+    under Creative Commons: By Attribution 4.0 License
+
+    <u><link="CREDITS">http://creativecommons.org/licenses/by/4.0/</link></u></i>
+
+
+
+    <u><#b95c1a>Font
+    Used:</color></u>
+
+    <i>@font-face (<u><link="CREDITS">www.fontfabric.com</link></u>)</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: daa523c1e36369c42a06179b81327cf1, type: 2}
   m_sharedMaterial: {fileID: 4171756191844732991, guid: daa523c1e36369c42a06179b81327cf1,
@@ -4285,7 +4316,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 82617a449c1ec2e478b8cc8b68e8df76, type: 3}
     group: {fileID: -2101814322825441754, guid: c426c27f91b7c9a468125af098511990,
       type: 2}
-    volume: 0.8
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}

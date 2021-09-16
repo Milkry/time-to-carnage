@@ -83,9 +83,7 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
-            Destroy(hpbar.gameObject);
-            Balance.Deposit(killReward);
+            Die();
         }
 
         if (target != null && !NoAI)
@@ -150,6 +148,14 @@ public class EnemyController : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        Destroy(hpbar.gameObject);
+        Balance.Deposit(killReward);
+        Balance.CalculateGems(1, 5, 5); //5% chance to give the player 1-5 gems upon enemy death
     }
 
     private void moveEnemyKnife()

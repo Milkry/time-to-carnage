@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [Space]
     [SerializeField] public List<Transform> spawnpoints;
     [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private List<GameObject> newEnemies;
     [Space]
     [Header("OTHER")]
     [Space]
@@ -51,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawnRate--;
                 timeUntilDifficultyIncrease += difficultyRate;
+                AddNewEnemy();
                 StartCoroutine(Warning());
                 Debug.Log($"Difficulty Increased! Now spawning enemies every: {spawnRate} seconds...");
             }
@@ -82,6 +84,18 @@ public class EnemySpawner : MonoBehaviour
             randomSpawnPoint = Random.Range(0, spawnpoints.Count);
             randomEnemy = Random.Range(0, enemies.Count);
             Instantiate(enemies[randomEnemy], spawnpoints[randomSpawnPoint].position, Quaternion.identity);
+        }
+    }
+
+    //Moves the 2 first gameobjects from the newEnemies list into the enemies list
+    private void AddNewEnemy()
+    {
+        if (newEnemies.Count != 0)
+        {
+            GameObject[] enemy = { newEnemies[0], newEnemies[1] };
+
+            enemies.AddRange(enemy);
+            newEnemies.RemoveRange(0, 2);
         }
     }
 }

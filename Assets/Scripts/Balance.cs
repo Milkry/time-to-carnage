@@ -81,6 +81,22 @@ public class Balance : MonoBehaviour
         }
     }
 
+    public static void CalculateGems(int minAmountInclusive, int maxAmountInclusive, int chance)
+    {
+        if (chance > 0 && chance <= 100)
+        {
+            if (chance <= Random.Range(1, 100))
+            {
+                int amount = Random.Range(minAmountInclusive, maxAmountInclusive);
+                DepositGems(amount);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Invalid 'Chance' number provided ({chance}). Number must be between (1 - 100)");
+        }
+    }
+
     public static void Reset()
     {
         accountBalance = 0;
