@@ -85,7 +85,7 @@ public class Balance : MonoBehaviour
     {
         if (chance > 0 && chance <= 100)
         {
-            if (chance <= Random.Range(1, 100))
+            if (chance >= Random.Range(1, 100))
             {
                 int amount = Random.Range(minAmountInclusive, maxAmountInclusive);
                 DepositGems(amount);

@@ -185,11 +185,11 @@ MonoBehaviour:
   target: {fileID: 5469739206112483436, guid: db4d3c0a57d46d54ba679add036eb6ea, type: 3}
   enemyType: 1
   NoAI: 0
-  damage: 7
+  damage: 17
   attackRate: 3
-  moveSpeed: 2
-  maxHealth: 25
-  killReward: 50
+  moveSpeed: 2.5
+  maxHealth: 45
+  killReward: 100
   bulletSpeed: 0
   distanceToShoot: 0
   firePoint: {fileID: 0}

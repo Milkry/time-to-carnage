@@ -188,7 +188,7 @@ MonoBehaviour:
   damage: 7
   attackRate: 3
   moveSpeed: 2
-  maxHealth: 25
+  maxHealth: 20
   killReward: 50
   bulletSpeed: 0
   distanceToShoot: 0

@@ -5112,11 +5112,11 @@ MonoBehaviour:
   target: {fileID: 5469739206112483436, guid: db4d3c0a57d46d54ba679add036eb6ea, type: 3}
   enemyType: 2
   NoAI: 0
-  damage: 13
+  damage: 30
   attackRate: 4
-  moveSpeed: 1.6
-  maxHealth: 15
-  killReward: 75
+  moveSpeed: 2.2
+  maxHealth: 40
+  killReward: 175
   bulletSpeed: 6
   distanceToShoot: 5
   firePoint: {fileID: 8745331940614105367}
