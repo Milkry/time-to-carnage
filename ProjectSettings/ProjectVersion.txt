@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 m_EditorVersion: 2020.3.29f1
 m_EditorVersionWithRevision: 2020.3.29f1 (2ff179115da0)
+=======
+m_EditorVersion: 2020.3.16f1
+m_EditorVersionWithRevision: 2020.3.16f1 (049d6eca3c44)
+>>>>>>> parent of 2fed95c (Updated editor version to 2020.3.28f1)

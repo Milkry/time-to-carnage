@@ -66,6 +66,7 @@ The following packages were updated:
   com.unity.textmeshpro from version 1.4.1 to 3.0.6
 The following packages were removed:
   com.unity.package-manager-ui@2.0.8
+<<<<<<< HEAD
 
 === Sat Feb 12 15:46:47 2022
 
@@ -86,3 +87,5 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.collab-proxy from version 1.15.7 to 1.15.12
+=======
+>>>>>>> parent of 2fed95c (Updated editor version to 2020.3.28f1)
