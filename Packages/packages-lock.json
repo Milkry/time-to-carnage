@@ -46,15 +46,10 @@
     },
     "com.unity.collab-proxy": {
 <<<<<<< HEAD
-<<<<<<< HEAD
       "version": "1.15.12",
-=======
-      "version": "1.15.7",
->>>>>>> parent of 954718e (Updated editor to 2020.3.29f1)
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0",
         "com.unity.services.core": "1.0.1"
 =======
       "version": "1.7.1",
