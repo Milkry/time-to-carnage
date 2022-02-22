@@ -1464,8 +1464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f40500b2272c2f43bd0045eee2067ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 120
-  spawnRate: 90
+  startDelay: 30
+  spawnRate: 60
   offsetPosition: 3
   spawnpoints:
   - {fileID: 575960329}
@@ -10097,9 +10097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833eebf7fd736ed4a90447b6e056497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 2
+  startDelay: 1
   spawnRate: 8
-  difficultyRate: 150
+  difficultyRate: 30
   spawnpoints:
   - {fileID: 1409780732}
   - {fileID: 86218632}

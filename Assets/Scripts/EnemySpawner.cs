@@ -51,10 +51,11 @@ public class EnemySpawner : MonoBehaviour
             if (spawnRate >= 2f)
             {
                 spawnRate--;
+                difficultyRate *= 2;
                 timeUntilDifficultyIncrease += difficultyRate;
                 AddNewEnemy();
                 StartCoroutine(Warning());
-                Debug.Log($"Difficulty Increased! Now spawning enemies every: {spawnRate} seconds...");
+                Debug.Log($"Difficulty Increased! Now spawning enemies every: {spawnRate} seconds...\nNext difficulty increase will be in {difficultyRate} seconds.");
             }
             else
             {
