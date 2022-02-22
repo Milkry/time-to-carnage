@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Joystick joystick;
     [SerializeField] private GameObject tutorial;
     [SerializeField] private GameObject firstPart;
+    [SerializeField] private GameObject weaponHolder;
+
 
     private Rigidbody2D rb;
+    //private WeaponSwitching weapon;
     private Vector2 moveVelocity;
     private float saveStartDelay = 60f;
     private float saveDelay = 60f;
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //weapon = weaponHolder.GetComponent<WeaponSwitching>();
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
         InvokeRepeating("AutoSave", saveStartDelay, saveDelay);
@@ -33,6 +37,27 @@ public class PlayerController : MonoBehaviour
         //Joystick positioning
         Vector2 joystickInput = new Vector2(joystick.Horizontal, joystick.Vertical);
         moveVelocity = joystickInput.normalized * speed;
+
+        // Keyboard Controls
+        /*float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 movement = new Vector2(horizontal, vertical);
+        moveVelocity = movement.normalized * speed;
+
+        // Shoot
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            weapon.OnButtonDown();
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            weapon.OnButtonUp();
+        }
+
+        // Track Mouse Position
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
     }
 
     private void FixedUpdate()

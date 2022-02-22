@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour
         hpslider = hpbar.GetComponentInChildren<Slider>();
         hpslider.maxValue = maxHealth;
         hpslider.value = maxHealth;
+        hpslider.interactable = false;
     }
 
     // Update is called once per frame

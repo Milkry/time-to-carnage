@@ -7,7 +7,6 @@ public class WeaponSwitching : MonoBehaviour
     private ItemHandler itemhandler;
     private SpriteRenderer playerSprite;
 
-    // Start is called before the first frame update
     void Start()
     {
         SelectWeapon();

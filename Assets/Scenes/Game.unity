@@ -14773,6 +14773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fixed Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: snapX
@@ -14979,7 +14984,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4415257865001617680}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4415257865001617682}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9787cc29fe57d64c88abbb073e27c0c, type: 3}
@@ -19489,6 +19494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415257866047970638, guid: db4d3c0a57d46d54ba679add036eb6ea,
         type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 4415257865001617682}
+    - target: {fileID: 4415257866047970638, guid: db4d3c0a57d46d54ba679add036eb6ea,
+        type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 2116161659}
@@ -19507,6 +19517,11 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 120923403}
+    - target: {fileID: 4415257866047970638, guid: db4d3c0a57d46d54ba679add036eb6ea,
+        type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 4415257865001617682}
     - target: {fileID: 4479293831403261490, guid: db4d3c0a57d46d54ba679add036eb6ea,
         type: 3}
       propertyPath: spread
@@ -19776,3 +19791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc55a5c6219b2546a18e3c2e0c66a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4415257865001617682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1667021570, guid: db4d3c0a57d46d54ba679add036eb6ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 4415257865001617680}
+  m_PrefabAsset: {fileID: 0}
