@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Joystick joystick;
+    [SerializeField] private GameObject weaponHolder;
+    [Space]
+    [Header("Tutorial")]
+    [Space]
     [SerializeField] private GameObject tutorial;
     [SerializeField] private GameObject firstPart;
-    [SerializeField] private GameObject weaponHolder;
+    [SerializeField] private GameObject joystickTutorialBox;
+    [SerializeField] private GameObject shootButtonTutorialBox;
 
 
     private Rigidbody2D rb;
@@ -120,6 +125,8 @@ public class PlayerController : MonoBehaviour
         {
             tutorial.SetActive(true);
             firstPart.SetActive(true);
+            joystickTutorialBox.SetActive(true);
+            shootButtonTutorialBox.SetActive(true);
             Time.timeScale = 0f;
         }
     }
