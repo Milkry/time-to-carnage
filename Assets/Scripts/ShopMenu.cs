@@ -15,7 +15,7 @@ public class ShopMenu : MonoBehaviour
     [SerializeField] private GameObject inventoryLayout;
     [SerializeField] private GameObject sideInventory;
 
-    private int[] prices = { 650, 1150, 1800, 2250, 2500, 1600, 5000, 250, 400, 0 };
+    private int[] prices = { 650, 1150, 1800, 2250, 2500, 0, 5000, 250, 400, 0 }; // shotgun was [1600]
 
     private void Start()
     {

@@ -55,13 +55,13 @@ public class EnemySpawner : MonoBehaviour
                 timeUntilDifficultyIncrease += difficultyRate;
                 AddNewEnemy();
                 StartCoroutine(Warning());
-                Debug.Log($"Difficulty Increased! Now spawning enemies every: {spawnRate} seconds...\nNext difficulty increase will be in {difficultyRate} seconds.");
+                //Debug.Log($"Difficulty Increased! Now spawning enemies every: {spawnRate} seconds...\nNext difficulty increase will be in {difficultyRate} seconds.");
             }
             else
             {
                 lockDifficultyIncreaser = true;
                 //max difficulty reached popup text on screen
-                Debug.LogWarning("Max difficulty reached!");
+                //Debug.LogWarning("Max difficulty reached!");
             }
         }
     }

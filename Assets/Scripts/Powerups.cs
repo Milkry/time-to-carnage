@@ -64,31 +64,37 @@ public class Powerups : MonoBehaviour
             switch (type.ToUpper())
             {
                 case "HEALTH":
-                    FindObjectOfType<AudioManager>().PlayOnTop("Powerup_Pickup");
-                    FindObjectOfType<PlayerController>().GetComponent<PlayerController>().AddHealth(healAmount);
+                    var player = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+                    if (player.currentHealth < player.maxHealth) // if player is hurt
+                    {
+                        player.AddHealth(healAmount);
+                        FindObjectOfType<AudioManager>().PlayOnTop("Powerup_Pickup");
+                        Destroy(gameObject);
+                    }
                     break;
 
                 case "AMMO":
                     FindObjectOfType<AudioManager>().PlayOnTop("Ammo_Pickup");
                     GetAndRefillGuns();
+                    Destroy(gameObject);
                     break;
 
                 case "MONEY":
                     FindObjectOfType<AudioManager>().PlayOnTop("Purchase");
                     Balance.Deposit(moneyDrop);
+                    Destroy(gameObject);
                     break;
 
                 case "GRENADES":
                     FindObjectOfType<AudioManager>().PlayOnTop("Powerup_Pickup");
                     SideInventory.AddGrenades(grenadeDrop);
+                    Destroy(gameObject);
                     break;
 
                 default:
                     Debug.LogWarning($"No such powerup exists. Used: {type.ToUpper()}");
                     break;
             }
-
-            Destroy(gameObject);
         }
     }
 
