@@ -84,4 +84,14 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+
+    public void PlayRandom(string[] names)
+    {
+        Play(names[UnityEngine.Random.Range(0, names.Length)]);
+    }
+
+    public void PlayRandomOnTop(string[] names)
+    {
+        PlayOnTop(names[UnityEngine.Random.Range(0, names.Length)]);
+    }
 }

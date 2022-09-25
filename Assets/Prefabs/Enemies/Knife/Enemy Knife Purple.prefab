@@ -186,7 +186,7 @@ MonoBehaviour:
   enemyType: 1
   NoAI: 0
   damage: 17
-  attackRate: 3
+  attackRate: 2
   moveSpeed: 2.5
   maxHealth: 45
   killReward: 100

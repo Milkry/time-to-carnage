@@ -157,6 +157,8 @@ public class EnemyController : MonoBehaviour
         Destroy(hpbar.gameObject);
         Balance.Deposit(killReward);
         Balance.CalculateGems(1, 5, 5); //5% chance to give the player 1-5 gems upon enemy death
+        string[] sounds = { "Enemy_death_grunt_1", "Enemy_death_grunt_2", "Enemy_death_grunt_3" };
+        FindObjectOfType<AudioManager>().PlayRandomOnTop(sounds);
     }
 
     private void moveEnemyKnife()
